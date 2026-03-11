@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOOT NFTs — Join the Founding Council</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00C853;
+    --dark-green: #007B33;
+    --orange: #FF6D00;
+    --teal: #00E5FF;
+    --dark: #0A0A0F;
+    --surface: #111827;
+    --surface2: #0D1B2A;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(0,200,83,0.4);
+    --text: #FFFFFF;
+    --text-secondary: #AAAAAA;
+    --text-muted: rgba(255,255,255,0.35);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--dark); color:var(--text); font-family:'Barlow',sans-serif; min-height:100vh; overflow-x:hidden; }
+
+  .bg-grid {
+    position:fixed; inset:0;
+    background-image: linear-gradient(rgba(0,200,83,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(0,200,83,0.03) 1px,transparent 1px);
+    background-size:40px 40px; pointer-events:none; z-index:0;
+  }
+  .bg-glow { position:fixed; top:-200px; left:50%; transform:translateX(-50%); width:700px; height:500px; background:radial-gradient(ellipse,rgba(0,200,83,0.08) 0%,transparent 70%); pointer-events:none; z-index:0; }
+  .bg-glow2 { position:fixed; bottom:-100px; right:-100px; width:400px; height:400px; background:radial-gradient(ellipse,rgba(255,109,0,0.06) 0%,transparent 70%); pointer-events:none; z-index:0; }
+
+  .wrapper { position:relative; z-index:1; max-width:700px; margin:0 auto; padding:40px 20px 80px; }
+
+  /* HEADER */
+  .header { text-align:center; margin-bottom:36px; animation:fadeUp 0.6s ease both; }
+  .logo-mark { display:inline-flex; align-items:center; gap:12px; margin-bottom:20px; }
+  .logo-icon { width:48px; height:48px; background:var(--orange); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; }
+  .logo-text { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:3px; }
+  .logo-text span { color:var(--orange); }
+  .header-eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:4px; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+  .header h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,8vw,62px); line-height:0.95; letter-spacing:2px; margin-bottom:14px; }
+  .header h1 .g { color:var(--green); } .header h1 .o { color:var(--orange); }
+  .header p { font-size:15px; color:var(--text-secondary); line-height:1.65; max-width:500px; margin:0 auto 20px; }
+  .counter-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.25); border-radius:100px; padding:8px 16px; font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--green); letter-spacing:1px; }
+  .cdot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+
+  /* PROGRESS */
+  .progress-wrap { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px; margin-bottom:28px; animation:fadeUp 0.6s 0.1s ease both; }
+  .progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .progress-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase; }
+  .progress-count { font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--green); font-weight:700; }
+  .progress-bar { height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--green),var(--teal)); border-radius:3px; transition:width 1s ease; }
+  .progress-sub { font-size:11px; color:var(--text-muted); margin-top:8px; }
+  .progress-sub strong { color:var(--orange); }
+
+  /* PRODUCT OVERVIEW SECTION */
+  .product-overview { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:28px; margin-bottom:28px; animation:fadeUp 0.6s 0.15s ease both; }
+  .overview-header { margin-bottom:20px; }
+  .overview-tag { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:3px; color:var(--orange); text-transform:uppercase; margin-bottom:6px; }
+  .overview-header h2 { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:2px; margin-bottom:6px; }
+  .overview-header p { font-size:13px; color:var(--text-secondary); line-height:1.5; }
+
+  /* PRODUCT BUCKETS */
+  .buckets-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-bottom:20px; }
+  .bucket { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+  .bucket-icon { font-size:20px; margin-bottom:6px; }
+  .bucket-name { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:1px; color:var(--text); margin-bottom:3px; }
+  .bucket-desc { font-size:11px; color:var(--text-muted); line-height:1.4; }
+
+  /* FEATURE LAYERS */
+  .layers-accordion { display:flex; flex-direction:column; gap:8px; }
+  .layer-item { background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .layer-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; transition:background 0.2s; user-select:none; }
+  .layer-header:hover { background:rgba(255,255,255,0.03); }
+  .layer-badge { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:1px; padding:3px 8px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  .badge-mvp { background:rgba(0,200,83,0.2); color:var(--green); }
+  .badge-phase2 { background:rgba(255,109,0,0.2); color:var(--orange); }
+  .badge-future { background:rgba(0,229,255,0.1); color:var(--teal); }
+  .layer-title { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:1px; flex:1; }
+  .layer-arrow { font-size:12px; color:var(--text-muted); transition:transform 0.3s; }
+  .layer-item.open .layer-arrow { transform:rotate(180deg); }
+  .layer-body { display:none; padding:0 16px 16px; }
+  .layer-item.open .layer-body { display:block; }
+  .feature-list { list-style:none; display:flex; flex-direction:column; gap:4px; }
+  .feature-list li { display:flex; align-items:flex-start; gap:8px; font-size:12.5px; color:var(--text-secondary); padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.03); line-height:1.4; }
+  .feature-list li:last-child { border-bottom:none; }
+  .feature-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+  .dot-green { background:var(--green); }
+  .dot-orange { background:var(--orange); }
+  .dot-teal { background:var(--teal); }
+  .dot-gray { background:rgba(255,255,255,0.2); }
+
+  /* FORM CARD */
+  .form-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; overflow:hidden; animation:fadeUp 0.6s 0.2s ease both; }
+  .step-indicator { display:flex; background:var(--surface2); border-bottom:1px solid var(--border); }
+  .step-item { flex:1; padding:13px 6px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); position:relative; transition:color 0.3s; cursor:default; }
+  .step-item.active { color:var(--green); }
+  .step-item.active::after { content:''; position:absolute; bottom:0; left:15%; right:15%; height:2px; background:var(--green); border-radius:2px 2px 0 0; }
+  .step-num { display:block; font-size:15px; font-weight:700; margin-bottom:1px; color:inherit; }
+
+  .form-section { display:none; padding:30px; animation:slideIn 0.4s ease; }
+  .form-section.active { display:block; }
+  @keyframes slideIn { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
+
+  .section-title { margin-bottom:24px; }
+  .section-tag { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:3px; color:var(--orange); text-transform:uppercase; margin-bottom:5px; }
+  .section-title h2 { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:2px; margin-bottom:5px; }
+  .section-title p { font-size:13px; color:var(--text-secondary); line-height:1.5; }
+
+  /* FIELDS */
+  .field-group { margin-bottom:18px; }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:500px){ .field-row{grid-template-columns:1fr} }
+
+  label { display:block; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-secondary); margin-bottom:7px; }
+  label .req { color:var(--orange); margin-left:3px; }
+
+  input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+    width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px;
+    padding:12px 15px; font-family:'Barlow',sans-serif; font-size:14px; color:var(--text); outline:none;
+    transition:border-color 0.2s,background 0.2s; appearance:none; -webkit-appearance:none;
+  }
+  input::placeholder, textarea::placeholder { color:var(--text-muted); }
+  input:focus, select:focus, textarea:focus { border-color:var(--border-active); background:rgba(0,200,83,0.04); }
+  select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; cursor:pointer; }
+  select option { background:#1a2233; color:var(--text); }
+  textarea { resize:vertical; min-height:80px; line-height:1.5; }
+  input.error, select.error { border-color:rgba(255,80,80,0.5); }
+  .error-msg { font-size:11px; color:#ff6b6b; margin-top:4px; display:none; }
+  .error-msg.show { display:block; }
+
+  /* OPTIONS */
+  .options-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:8px; }
+  .options-grid.cols2 { grid-template-columns:1fr 1fr; }
+  .options-grid.cols1 { grid-template-columns:1fr; }
+  .option-item { position:relative; }
+  .option-item input[type="radio"], .option-item input[type="checkbox"] { position:absolute; opacity:0; width:0; height:0; }
+  .option-label { display:flex; align-items:center; gap:9px; padding:11px 13px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:9px; cursor:pointer; transition:all 0.2s; font-size:12.5px; color:var(--text-secondary); line-height:1.3; }
+  .option-label:hover { border-color:rgba(0,200,83,0.25); background:rgba(0,200,83,0.04); color:var(--text); }
+  .option-item input:checked + .option-label { border-color:var(--green); background:rgba(0,200,83,0.1); color:var(--text); }
+  .ocheck { width:17px; height:17px; border:1.5px solid rgba(255,255,255,0.2); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+  .option-item input[type="checkbox"] + .option-label .ocheck { border-radius:4px; }
+  .option-item input:checked + .option-label .ocheck { background:var(--green); border-color:var(--green); }
+  .option-item input:checked + .option-label .ocheck::after { content:'✓'; font-size:10px; color:#000; font-weight:700; }
+  .oemoji { font-size:17px; flex-shrink:0; }
+
+  /* STAR RATING */
+  .star-rating { display:flex; flex-direction:row-reverse; justify-content:flex-end; gap:6px; }
+  .star-rating input { display:none; }
+  .star-rating label { font-size:26px; cursor:pointer; color:rgba(255,255,255,0.12); transition:color 0.15s; margin:0; letter-spacing:0; text-transform:none; }
+  .star-rating:hover label { color:var(--orange); }
+  .star-rating label:hover ~ label { color:rgba(255,255,255,0.12); }
+  .star-rating input:checked ~ label { color:var(--orange); }
+
+  /* RANGE */
+  input[type="range"] { -webkit-appearance:none; width:100%; height:4px; background:rgba(255,255,255,0.08); border-radius:2px; outline:none; border:none; padding:0; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; background:var(--green); border-radius:50%; cursor:pointer; box-shadow:0 0 8px rgba(0,200,83,0.4); }
+  .range-labels { display:flex; justify-content:space-between; margin-top:8px; font-size:10px; color:var(--text-muted); }
+  .range-value { text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; color:var(--green); margin-top:5px; }
+
+  /* FEATURE PRIORITY SECTION */
+  .priority-callout { background:rgba(0,200,83,0.06); border:1px solid rgba(0,200,83,0.2); border-radius:12px; padding:16px; margin-bottom:18px; }
+  .priority-callout h4 { font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:1.5px; color:var(--green); text-transform:uppercase; margin-bottom:6px; }
+  .priority-callout p { font-size:12px; color:var(--text-secondary); line-height:1.5; }
+
+  .feature-priority-grid { display:flex; flex-direction:column; gap:6px; }
+  .priority-feature { display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:all 0.2s; }
+  .priority-feature:hover { border-color:rgba(0,200,83,0.2); background:rgba(0,200,83,0.03); }
+  .priority-feature input[type="checkbox"] { width:16px; height:16px; accent-color:var(--green); cursor:pointer; flex-shrink:0; }
+  .pf-content { flex:1; }
+  .pf-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; color:var(--text); }
+  .pf-desc { font-size:11px; color:var(--text-muted); margin-top:2px; line-height:1.3; }
+  .pf-badge { font-family:'Barlow Condensed',sans-serif; font-size:9px; padding:2px 7px; border-radius:3px; letter-spacing:1px; white-space:nowrap; }
+  .pf-mvp { background:rgba(0,200,83,0.15); color:var(--green); }
+  .pf-p2 { background:rgba(255,109,0,0.15); color:var(--orange); }
+  .pf-future { background:rgba(0,229,255,0.1); color:var(--teal); }
+
+  .priority-warning { font-size:11px; color:var(--orange); margin-top:8px; font-style:italic; }
+
+  /* DIVIDER */
+  .field-divider { height:1px; background:var(--border); margin:22px 0; }
+
+  /* BUTTONS */
+  .btn-row { display:flex; gap:10px; justify-content:space-between; margin-top:28px; padding-top:20px; border-top:1px solid var(--border); }
+  .btn { padding:13px 24px; border-radius:10px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; border:none; transition:all 0.2s; }
+  .btn-primary { background:var(--green); color:#000; flex:1; }
+  .btn-primary:hover { background:#00e65c; transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,200,83,0.3); }
+  .btn-secondary { background:transparent; color:var(--text-secondary); border:1px solid var(--border); }
+  .btn-secondary:hover { border-color:rgba(255,255,255,0.2); color:var(--text); }
+  .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+  /* SUCCESS */
+  #success-screen { display:none; text-align:center; padding:50px 28px; animation:fadeUp 0.6s ease both; }
+  .success-icon { width:76px; height:76px; background:rgba(0,200,83,0.1); border:2px solid var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:34px; margin:0 auto 20px; animation:popIn 0.5s 0.2s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+  @keyframes popIn { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+  #success-screen h2 { font-family:'Bebas Neue',sans-serif; font-size:40px; letter-spacing:3px; margin-bottom:8px; }
+  #success-screen h2 span { color:var(--green); }
+  #success-screen p { font-size:13.5px; color:var(--text-secondary); line-height:1.6; max-width:400px; margin:0 auto 20px; }
+  .position-badge { display:inline-block; background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.3); border-radius:100px; padding:9px 22px; font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--green); letter-spacing:2px; margin-bottom:20px; }
+
+  .share-section { background:var(--surface2); border:1px solid var(--border); border-radius:14px; padding:18px; margin-top:20px; }
+  .share-section h4 { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase; margin-bottom:12px; }
+  .share-link { display:flex; gap:8px; align-items:center; }
+  .share-link input { flex:1; font-size:12px; padding:10px 12px; color:var(--text-secondary); }
+  .btn-copy { padding:10px 16px; background:var(--orange); color:#fff; border:none; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
+  .btn-copy:hover { background:#ff8533; }
+  .btn-copy.copied { background:var(--green); color:#000; }
+  .social-share { display:flex; gap:8px; margin-top:10px; }
+  .social-btn { flex:1; padding:9px; border-radius:7px; border:1px solid var(--border); background:transparent; color:var(--text-secondary); font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:1px; cursor:pointer; transition:all 0.2s; text-align:center; }
+  .social-btn:hover { border-color:rgba(255,255,255,0.2); color:var(--text); background:rgba(255,255,255,0.04); }
+
+  /* FOOTER */
+  .form-footer { text-align:center; margin-top:28px; font-size:11px; color:var(--text-muted); letter-spacing:0.5px; line-height:1.8; animation:fadeUp 0.6s 0.4s ease both; }
+  .form-footer strong { color:var(--teal); }
+
+  .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--surface); border:1px solid var(--border-active); border-radius:10px; padding:11px 18px; font-size:13px; color:var(--green); font-family:'Barlow Condensed',sans-serif; letter-spacing:1px; transition:transform 0.3s ease; z-index:100; white-space:nowrap; }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+<div class="toast" id="toast">✓ Copied to clipboard</div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <a href="https://footnfts.com" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+    <div class="logo-mark">
+      <div class="logo-icon">⚽</div>
+      <div class="logo-text">FOOT <span>NFTs</span></div>
+    </div>
+    </a>
+    <div class="header-eyebrow">Early Access — Founding Council</div>
+    <h1>JOIN THE<br><span class="g">FOUNDING</span><br><span class="o">COUNCIL</span></h1>
+    <p>Be part of the first 10,000 fans to shape the future of football ownership. Vote on what becomes history. Earn from the moments you champion.</p>
+    <div class="counter-badge">
+      <div class="cdot"></div>
+      <span id="live-counter">Loading waitlist...</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span class="progress-label">Founding Council Progress</span>
+      <span class="progress-count" id="progress-count">0 / 10,000</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-sub"><strong id="spots-left">10,000 spots</strong> remaining · Early supporters get exclusive NFT badge + bonus FTC tokens + Founding Member status</div>
+  </div>
+
+  <!-- PRODUCT OVERVIEW -->
+  <div class="product-overview">
+    <div class="overview-header">
+      <div class="overview-tag">What We're Building</div>
+      <h2>FOOT NFTs — Product Architecture</h2>
+      <p>A full-stack fan ownership platform. Six functional layers, built in phases. Here's what the platform does and when.</p>
+    </div>
+
+    <!-- FUNCTIONAL BUCKETS -->
+    <div class="buckets-row">
+      <div class="bucket">
+        <div class="bucket-icon">🗳️</div>
+        <div class="bucket-name">Voting Engine</div>
+        <div class="bucket-desc">Fans vote highlights into permanent existence</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">⚡</div>
+        <div class="bucket-name">Momentum Scoring</div>
+        <div class="bucket-desc">Algorithm that weights votes + activity + sentiment</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">🏛️</div>
+        <div class="bucket-name">Archive Mechanism</div>
+        <div class="bucket-desc">Permanent on-chain record of fan-voted moments</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">🪪</div>
+        <div class="bucket-name">Fan Identity</div>
+        <div class="bucket-desc">Points, badges, reputation — your fan record</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">📊</div>
+        <div class="bucket-name">Sentiment Analytics</div>
+        <div class="bucket-desc">Real-time fan emotion data for clubs (B2B)</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">🏪</div>
+        <div class="bucket-name">Marketplace Layer</div>
+        <div class="bucket-desc">Verified infrastructure for club merch & NFT trades</div>
+      </div>
+      <div class="bucket">
+        <div class="bucket-icon">🏛️</div>
+        <div class="bucket-name">Fan Governance</div>
+        <div class="bucket-desc">Token holders vote on platform direction</div>
+      </div>
+    </div>
+
+    <!-- FEATURE LAYERS ACCORDION -->
+    <div class="layers-accordion">
+
+      <!-- LAYER 1 -->
+      <div class="layer-item open">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-mvp">MVP — Launch Now</span>
+          <span class="layer-title">1️⃣ Core Launch Functionality</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-green"></span><span><strong>User Registration & Profiles</strong> — Sign up, fan profile, favourite club, participation history</span></li>
+            <li><span class="feature-dot dot-green"></span><span><strong>Highlight Voting System</strong> — Post-match listings, structured voting, momentum tracking, time-limited windows</span></li>
+            <li><span class="feature-dot dot-green"></span><span><strong>Momentum Threshold Engine</strong> — Algorithm (votes + activity + sentiment), public progress bar, threshold unlock</span></li>
+            <li><span class="feature-dot dot-green"></span><span><strong>"Moment Archived" Announcement</strong> — Official confirmation, public archive entry, immutable timestamp</span></li>
+            <li><span class="feature-dot dot-green"></span><span><strong>Basic Points + Early Voter Badges</strong> — Earn for voting, early participation marker, "Historic Contributor" status</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LAYER 2 -->
+      <div class="layer-item">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-phase2">Phase 2</span>
+          <span class="layer-title">2️⃣ Engagement & Identity Layer</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-orange"></span><span><strong>Fan Participation History</strong> — Full record of moments voted on, early voter recognition</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Advanced Points System</strong> — Earn for voting, debates, referrals, engagement streaks</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Badges</strong> — Derby Defender, Early Believer, Club Historian, Momentum Starter, and more</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Leaderboards</strong> — Top contributors per club, weekly ranking, all-time historic voters</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Fan Reputation Score</strong> — Consistency-based long-term identity score</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LAYER 3 -->
+      <div class="layer-item">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-phase2">Phase 3</span>
+          <span class="layer-title">3️⃣ NFT / Archive Layer</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-orange"></span><span><strong>Blockchain Archival</strong> — Highlights permanently stored, immutable metadata, proof of archival on TON</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Fan-Linked Mint Record</strong> — Record of users who voted, timestamped participation proof</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Highlight Ownership</strong> — Limited edition ownership, fan-certified moments, 2.5% platform fee</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Stakeholder Royalty Share</strong> — Club, player, voters and platform all share minting + trading royalties</span></li>
+            <li><span class="feature-dot dot-gray"></span><span><strong>Physical + Digital Jersey Pairing</strong> — Highlight embedded into digital twin of physical jersey</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LAYER 4 -->
+      <div class="layer-item">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-phase2">Phase 2 — B2B</span>
+          <span class="layer-title">4️⃣ Sentiment Engine</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-orange"></span><span><strong>Match Sentiment Capture</strong> — Fan emotional response data, structured reaction categories</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Club Dashboard</strong> — Fan mood tracking, highlight popularity, player sentiment analytics, engagement heatmaps</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Narrative Mapping</strong> — Track how a moment evolved pre/post match, longitudinal emotion data</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LAYER 5 -->
+      <div class="layer-item">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-phase2">Phase 3 — Infrastructure</span>
+          <span class="layer-title">5️⃣ Marketplace / Commerce Layer</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-orange"></span><span><strong>Club Merchandise Listing</strong> — Clubs list official merch, verified authenticity. Platform does NOT sell goods directly.</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Third-Party Vendor Integration</strong> — Sports gear sellers onboard, delivery handled by partners</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Highlight-Linked Merch</strong> — Historic highlight jerseys, limited narrative edition kits</span></li>
+            <li><span class="feature-dot dot-orange"></span><span><strong>Secure Transaction Infrastructure</strong> — 2.5% commission on highlight-related NFT transactions</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LAYER 6 -->
+      <div class="layer-item">
+        <div class="layer-header" onclick="toggleLayer(this)">
+          <span class="layer-badge badge-future">Future Vision</span>
+          <span class="layer-title">6️⃣ Future Expansion Layer</span>
+          <span class="layer-arrow">▼</span>
+        </div>
+        <div class="layer-body">
+          <ul class="feature-list">
+            <li><span class="feature-dot dot-teal"></span><span><strong>Player Highlight Portability</strong> — Highlights follow player career across clubs, cross-club narrative tracking</span></li>
+            <li><span class="feature-dot dot-teal"></span><span><strong>Fan Governance</strong> — Voting power scales with reputation, proposal system, DAO model</span></li>
+            <li><span class="feature-dot dot-teal"></span><span><strong>Cross-League Expansion</strong> — EPL → La Liga → Serie A → UCL → World Cup</span></li>
+            <li><span class="feature-dot dot-teal"></span><span><strong>Historical Back-Minting</strong> — Classic matches archived by modern fans, generational voting</span></li>
+            <li><span class="feature-dot dot-teal"></span><span><strong>API for Clubs & Broadcasters</strong> — Sentiment API, archive embedding, white-label integration</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="form-card">
+
+    <div class="step-indicator">
+      <div class="step-item active" id="step-tab-1"><span class="step-num">01</span>About You</div>
+      <div class="step-item" id="step-tab-2"><span class="step-num">02</span>Football</div>
+      <div class="step-item" id="step-tab-3"><span class="step-num">03</span>Features</div>
+      <div class="step-item" id="step-tab-4"><span class="step-num">04</span>Web3</div>
+      <div class="step-item" id="step-tab-5"><span class="step-num">05</span>Join</div>
+    </div>
+
+    <!-- STEP 1: ABOUT YOU -->
+    <div class="form-section active" id="step-1">
+      <div class="section-title">
+        <div class="section-tag">Step 1 of 5</div>
+        <h2>Tell Us About Yourself</h2>
+        <p>Quick intro — 2 minutes or less</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="first-name" placeholder="e.g. Chidi">
+          <div class="error-msg" id="err-first-name">Required</div>
+        </div>
+        <div class="field-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="last-name" placeholder="e.g. Okafor">
+          <div class="error-msg" id="err-last-name">Required</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Age Range <span class="req">*</span></label>
+        <div class="options-grid cols2">
+          <div class="option-item"><input type="radio" name="age" id="a1" value="Under 18"><label class="option-label" for="a1"><div class="ocheck"></div>Under 18</label></div>
+          <div class="option-item"><input type="radio" name="age" id="a2" value="18–24"><label class="option-label" for="a2"><div class="ocheck"></div>18 – 24</label></div>
+          <div class="option-item"><input type="radio" name="age" id="a3" value="25–34"><label class="option-label" for="a3"><div class="ocheck"></div>25 – 34</label></div>
+          <div class="option-item"><input type="radio" name="age" id="a4" value="35–44"><label class="option-label" for="a4"><div class="ocheck"></div>35 – 44</label></div>
+          <div class="option-item"><input type="radio" name="age" id="a5" value="45+"><label class="option-label" for="a5"><div class="ocheck"></div>45+</label></div>
+        </div>
+        <div class="error-msg" id="err-age">Please select your age range</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Country <span class="req">*</span></label>
+          <select id="country">
+            <option value="">Select country...</option>
+            <option>🇳🇬 Nigeria</option><option>🇬🇭 Ghana</option><option>🇰🇪 Kenya</option>
+            <option>🇿🇦 South Africa</option><option>🇪🇬 Egypt</option><option>🇸🇳 Senegal</option>
+            <option>🇨🇮 Ivory Coast</option><option>🇬🇧 United Kingdom</option>
+            <option>🇺🇸 United States</option><option>🌍 Other Africa</option><option>🌐 Other</option>
+          </select>
+          <div class="error-msg" id="err-country">Required</div>
+        </div>
+        <div class="field-group">
+          <label>How did you find us?</label>
+          <select id="source">
+            <option value="">Select...</option>
+            <option>Social Media</option><option>Friend / Referral</option>
+            <option>Telegram</option><option>Jersey / QR Code</option>
+            <option>Pitch Event</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="nextStep(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: FOOTBALL -->
+    <div class="form-section" id="step-2">
+      <div class="section-title">
+        <div class="section-tag">Step 2 of 5</div>
+        <h2>Your Football Life</h2>
+        <p>Your passion shapes what we build</p>
+      </div>
+
+      <div class="field-group">
+        <label>Primary league you follow <span class="req">*</span></label>
+        <div class="options-grid">
+          <div class="option-item"><input type="radio" name="league" id="lg1" value="Premier League"><label class="option-label" for="lg1"><span class="oemoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>Premier League</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg2" value="La Liga"><label class="option-label" for="lg2"><span class="oemoji">🇪🇸</span>La Liga</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg3" value="Serie A"><label class="option-label" for="lg3"><span class="oemoji">🇮🇹</span>Serie A</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg4" value="Ligue 1"><label class="option-label" for="lg4"><span class="oemoji">🇫🇷</span>Ligue 1</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg5" value="NPFL"><label class="option-label" for="lg5"><span class="oemoji">🇳🇬</span>NPFL</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg6" value="AFCON"><label class="option-label" for="lg6"><span class="oemoji">🌍</span>AFCON</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg7" value="CAF CL"><label class="option-label" for="lg7"><span class="oemoji">🏆</span>CAF CL</label></div>
+          <div class="option-item"><input type="radio" name="league" id="lg8" value="UCL"><label class="option-label" for="lg8"><span class="oemoji">⭐</span>UCL</label></div>
+        </div>
+        <div class="error-msg" id="err-league">Please select a league</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Favourite Club</label>
+          <input type="text" id="fav-club" placeholder="e.g. Arsenal, Enyimba FC...">
+        </div>
+        <div class="field-group">
+          <label>Watch frequency</label>
+          <select id="watch-freq">
+            <option value="">Select...</option>
+            <option>Every match</option><option>Most matches</option>
+            <option>Weekends only</option><option>Occasionally</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Rate your passion for football</label>
+        <div class="star-rating">
+          <input type="radio" name="passion" id="s5" value="5"><label for="s5">★</label>
+          <input type="radio" name="passion" id="s4" value="4"><label for="s4">★</label>
+          <input type="radio" name="passion" id="s3" value="3"><label for="s3">★</label>
+          <input type="radio" name="passion" id="s2" value="2"><label for="s2">★</label>
+          <input type="radio" name="passion" id="s1" value="1"><label for="s1">★</label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: FEATURE PRIORITY -->
+    <div class="form-section" id="step-3">
+      <div class="section-title">
+        <div class="section-tag">Step 3 of 5 — Product Input</div>
+        <h2>Shape What We Build</h2>
+        <p>This is your voice in the product. Tell us which features matter most to you.</p>
+      </div>
+
+      <div class="priority-callout">
+        <h4>The PM Question</h4>
+        <p>If we launch in 30 days with only 5 features, which ones should they be? Your answers directly influence our build priority. No pressure — just your honest football fan instinct.</p>
+      </div>
+
+      <div class="field-group">
+        <label>Which features excite you most? Select up to 5 <span class="req">*</span></label>
+        <div class="feature-priority-grid">
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf1" name="pfeature" value="Highlight Voting">
+            <div class="pf-content"><div class="pf-name">Highlight Voting System</div><div class="pf-desc">Vote on post-match highlights to decide what becomes archived history</div></div>
+            <span class="pf-badge pf-mvp">MVP</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf2" name="pfeature" value="Momentum Progress Bar">
+            <div class="pf-content"><div class="pf-name">Momentum Progress Bar</div><div class="pf-desc">Public live bar showing a highlight's journey toward being archived</div></div>
+            <span class="pf-badge pf-mvp">MVP</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf3" name="pfeature" value="Moment Archived Announcement">
+            <div class="pf-content"><div class="pf-name">"Moment Archived" Announcement</div><div class="pf-desc">Official confirmation when a highlight crosses threshold and is permanently stored</div></div>
+            <span class="pf-badge pf-mvp">MVP</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf4" name="pfeature" value="Basic Profile + Points">
+            <div class="pf-content"><div class="pf-name">Fan Profile + Points</div><div class="pf-desc">Personal fan identity, points for voting, participation history</div></div>
+            <span class="pf-badge pf-mvp">MVP</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf5" name="pfeature" value="Early Voter Badge">
+            <div class="pf-content"><div class="pf-name">Early Voter Badges</div><div class="pf-desc">"I voted this moment into history" — permanent proof of early participation</div></div>
+            <span class="pf-badge pf-mvp">MVP</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf6" name="pfeature" value="Leaderboards">
+            <div class="pf-content"><div class="pf-name">Leaderboards</div><div class="pf-desc">Top voters per club, weekly ranking, all-time historic contributors</div></div>
+            <span class="pf-badge pf-p2">Phase 2</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf7" name="pfeature" value="NFT Ownership + Royalties">
+            <div class="pf-content"><div class="pf-name">NFT Ownership + Royalty Share</div><div class="pf-desc">Own voted moments as NFTs, earn royalties every time they trade</div></div>
+            <span class="pf-badge pf-p2">Phase 3</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf8" name="pfeature" value="Jersey Day Scanning">
+            <div class="pf-content"><div class="pf-name">Jersey Day — Physical Scanning</div><div class="pf-desc">Scan your physical kit to unlock digital identity and rewards</div></div>
+            <span class="pf-badge pf-p2">Phase 2</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf9" name="pfeature" value="Fan Sentiment Analytics">
+            <div class="pf-content"><div class="pf-name">Fan Sentiment Engine</div><div class="pf-desc">Real-time matchday emotion data — your mood captured and sent to clubs</div></div>
+            <span class="pf-badge pf-p2">Phase 2</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf10" name="pfeature" value="Fan Governance DAO">
+            <div class="pf-content"><div class="pf-name">Fan Governance / DAO</div><div class="pf-desc">Token holders vote on platform direction, community funds, and club decisions</div></div>
+            <span class="pf-badge pf-future">Future</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf11" name="pfeature" value="Historical Back-Minting">
+            <div class="pf-content"><div class="pf-name">Historical Back-Minting</div><div class="pf-desc">Vote classic matches from history into the archive — generational football memory</div></div>
+            <span class="pf-badge pf-future">Future</span>
+          </div>
+
+          <div class="priority-feature">
+            <input type="checkbox" id="pf12" name="pfeature" value="Hope Campaign Donations">
+            <div class="pf-content"><div class="pf-name">Hope Campaign Donations</div><div class="pf-desc">Donate FTC tokens to grassroots football and youth development</div></div>
+            <span class="pf-badge pf-p2">Phase 4</span>
+          </div>
+
+        </div>
+        <div class="priority-warning" id="priority-warning" style="display:none">⚠️ Please select at least 1 feature</div>
+      </div>
+
+      <div class="field-group">
+        <label>If you could only have ONE feature at launch, which would it be?</label>
+        <textarea id="one-feature" placeholder="e.g. The voting system — because watching a moment reach the threshold in real time would be addictive..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: WEB3 -->
+    <div class="form-section" id="step-4">
+      <div class="section-title">
+        <div class="section-tag">Step 4 of 5</div>
+        <h2>Web3 & NFT Experience</h2>
+        <p>No wrong answers — helps us build the right onboarding for you</p>
+      </div>
+
+      <div class="field-group">
+        <label>Your crypto / Web3 experience</label>
+        <div class="options-grid cols1">
+          <div class="option-item"><input type="radio" name="web3" id="w1" value="Complete beginner"><label class="option-label" for="w1"><span class="oemoji">🌱</span>Complete beginner — never used crypto</label></div>
+          <div class="option-item"><input type="radio" name="web3" id="w2" value="Heard of it"><label class="option-label" for="w2"><span class="oemoji">👀</span>I've heard about it but never tried it</label></div>
+          <div class="option-item"><input type="radio" name="web3" id="w3" value="Some experience"><label class="option-label" for="w3"><span class="oemoji">🔥</span>I own some crypto and understand the basics</label></div>
+          <div class="option-item"><input type="radio" name="web3" id="w4" value="Experienced"><label class="option-label" for="w4"><span class="oemoji">💎</span>I actively trade / invest in Web3</label></div>
+          <div class="option-item"><input type="radio" name="web3" id="w5" value="Builder"><label class="option-label" for="w5"><span class="oemoji">⚡</span>I build or work in the Web3 space</label></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Telegram usage</label>
+          <select id="telegram-use">
+            <option value="">Select...</option>
+            <option>Yes — use it daily</option>
+            <option>Yes — occasionally</option>
+            <option>No, but I'll try</option>
+            <option>Never used it</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>NFT experience</label>
+          <select id="nft-exp">
+            <option value="">Select...</option>
+            <option>Never bought one</option>
+            <option>I know what they are</option>
+            <option>I've bought/sold NFTs</option>
+            <option>I collect actively</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>If a highlight you loved reached the momentum threshold — would you vote it into an NFT?</label>
+        <div class="options-grid cols1">
+          <div class="option-item"><input type="radio" name="vote-intent" id="vi1" value="Absolutely — first in line"><label class="option-label" for="vi1"><span class="oemoji">🔥</span>Absolutely — I'd be first in line to vote</label></div>
+          <div class="option-item"><input type="radio" name="vote-intent" id="vi2" value="Yes if it was my club"><label class="option-label" for="vi2"><span class="oemoji">⚽</span>Yes — if it was a moment from my club</label></div>
+          <div class="option-item"><input type="radio" name="vote-intent" id="vi3" value="Depends on the moment"><label class="option-label" for="vi3"><span class="oemoji">🤔</span>Depends — it has to be a legendary moment</label></div>
+          <div class="option-item"><input type="radio" name="vote-intent" id="vi4" value="Not sure yet"><label class="option-label" for="vi4"><span class="oemoji">👀</span>Not sure yet — still learning about NFTs</label></div>
+        </div>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label>Physical Jersey + Digital Twin — Would you want this?</label>
+        <div style="background:rgba(255,109,0,0.06);border:1px solid rgba(255,109,0,0.2);border-radius:12px;padding:14px 16px;margin-bottom:12px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#FF6D00;margin-bottom:6px;">🎽 JERSEY DAY — HOW IT WORKS</div>
+          <div style="font-size:12px;color:#aaa;line-height:1.6;">
+            Buy an official FOOT NFTs physical jersey → it's paired with a digital twin that lives on-chain forever. 
+            Players and football highlights get added to your digital jersey over time. 
+            When anyone scans your physical jersey QR code, they see your living digital version — 
+            your club, your voted moments, your fan history. The jersey grows with you.
+          </div>
+        </div>
+        <div class="options-grid cols1">
+          <div class="option-item"><input type="radio" name="jersey-intent" id="ji1" value="Yes — physical + digital both"><label class="option-label" for="ji1"><span class="oemoji">🔥</span>Yes — I want both the physical jersey and the digital twin</label></div>
+          <div class="option-item"><input type="radio" name="jersey-intent" id="ji2" value="Physical only"><label class="option-label" for="ji2"><span class="oemoji">👕</span>Mainly the physical jersey — digital is a bonus</label></div>
+          <div class="option-item"><input type="radio" name="jersey-intent" id="ji3" value="Digital only"><label class="option-label" for="ji3"><span class="oemoji">📲</span>Mainly the digital twin — I care about the on-chain version</label></div>
+          <div class="option-item"><input type="radio" name="jersey-intent" id="ji4" value="Love the scan concept"><label class="option-label" for="ji4"><span class="oemoji">📷</span>The scan-to-reveal concept alone would make me buy it</label></div>
+          <div class="option-item"><input type="radio" name="jersey-intent" id="ji5" value="Not interested"><label class="option-label" for="ji5"><span class="oemoji">🤷</span>Not something I'd personally use</label></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>What would you want added to your digital jersey over time?</label>
+        <div class="options-grid cols2">
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja1" value="Highlights you voted in"><label class="option-label" for="ja1"><div class="ocheck"></div>Highlights you voted in</label></div>
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja2" value="Player signatures"><label class="option-label" for="ja2"><div class="ocheck"></div>Player signatures</label></div>
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja3" value="Match attendance proof"><label class="option-label" for="ja3"><div class="ocheck"></div>Match attendance proof</label></div>
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja4" value="Club trophies won"><label class="option-label" for="ja4"><div class="ocheck"></div>Club trophies won</label></div>
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja5" value="Fan rank + badges"><label class="option-label" for="ja5"><div class="ocheck"></div>Fan rank + badges</label></div>
+          <div class="option-item"><input type="checkbox" name="jersey-add" id="ja6" value="AFCON / tournament moments"><label class="option-label" for="ja6"><div class="ocheck"></div>AFCON / tournament moments</label></div>
+        </div>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field-group">
+        <label>What would make FOOT NFTs unmissable for you?</label>
+        <textarea id="unmissable" placeholder="Your honest answer — what would make you open the app every matchday without thinking?"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: JOIN -->
+    <div class="form-section" id="step-5">
+      <div class="section-title">
+        <div class="section-tag">Step 5 of 5 — Final Step</div>
+        <h2>Secure Your Spot</h2>
+        <p>Join the Founding Council. First 10,000 get exclusive early access, bonus FTC tokens, Early Voter badge, and a permanent place in football history.</p>
+      </div>
+
+      <div class="field-group">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com">
+        <div class="error-msg" id="err-email">Please enter a valid email</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Telegram Username</label>
+          <input type="text" id="telegram-handle" placeholder="@yourhandle">
+        </div>
+        <div class="field-group">
+          <label>Phone (optional)</label>
+          <input type="tel" id="phone" placeholder="+234 000 0000">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Referral Code</label>
+        <input type="text" id="referral" placeholder="e.g. KACHI2025 — moves you up the list">
+      </div>
+
+      <div class="field-group">
+        <label>Any message to the FOOT NFTs team?</label>
+        <textarea id="final-message" placeholder="Your ideas, your excitement, your football story..."></textarea>
+      </div>
+
+      <div class="field-group" style="margin-top:6px">
+        <div class="option-item">
+          <input type="checkbox" id="consent">
+          <label class="option-label" for="consent" style="font-size:12px;color:#aaa">
+            <div class="ocheck" style="border-radius:4px;flex-shrink:0"></div>
+            I agree to receive FOOT NFTs updates, early access invites, and product news. No spam. <span class="req">*</span>
+          </label>
+        </div>
+        <div class="error-msg" id="err-consent">Please accept to continue</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="prevStep(5)">← Back</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitForm()">🚀 Join the Founding Council</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="success-screen">
+      <div class="success-icon">⚽</div>
+      <h2>YOU'RE <span>IN!</span></h2>
+      <p>Welcome to the FOOT NFTs Founding Council. You now have a vote in football history. Watch your email for launch day.</p>
+      <div class="position-badge" id="position-badge">🏆 Founding Member #—</div>
+      <p style="font-size:12px;color:#555;margin-bottom:16px">Your feature votes have been recorded and will directly influence our build roadmap.</p>
+
+      <div class="share-section">
+        <h4>Invite Friends — Move Up the Founding Council List</h4>
+        <div class="share-link">
+          <input type="text" id="share-url" readonly value="https://footnfts.com/waitlist">
+          <button class="btn-copy" id="copy-btn" onclick="copyLink()">Copy Link</button>
+        </div>
+        <div class="social-share">
+          <button class="social-btn" onclick="shareTwitter()">𝕏 Share on X</button>
+          <button class="social-btn" onclick="shareTelegram()">✈️ Telegram</button>
+          <button class="social-btn" onclick="shareWhatsApp()">💬 WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /form-card -->
+
+  <div class="form-footer">
+    <strong>FOOT NFTs</strong> — Own the Pitch · Built on TON · Powered by KACHI LABS<br>
+    <a href="https://footnfts.com" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">footnfts.com</a> · <a href="https://t.me/footnfts_bot" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">t.me/footnfts_bot</a> · Your data is used only for waitlist and product updates.
+  </div>
+
+</div>
+
+<script>
+  let currentStep = 1;
+  const TOTAL_STEPS = 5;
+  const SPEND_LABELS = ['$0','$5','$10','$25','$50','$100+'];
+  const COUNT_KEY = 'footnfts_waitlist_count_v2';
+
+  // ── LOAD COUNT ──
+  async function loadCount() {
+    try {
+      const r = await window.storage.get(COUNT_KEY, true);
+      updateCounterUI(r ? parseInt(r.value) : 47);
+    } catch(e) { updateCounterUI(47); }
+  }
+
+  function updateCounterUI(n) {
+    document.getElementById('live-counter').textContent = `${n.toLocaleString()} fans on the waitlist`;
+    document.getElementById('progress-count').textContent = `${n.toLocaleString()} / 10,000`;
+    document.getElementById('progress-fill').style.width = Math.min((n/10000)*100,100)+'%';
+    document.getElementById('spots-left').textContent = `${Math.max(10000-n,0).toLocaleString()} spots`;
+  }
+
+  // ── ACCORDION ──
+  function toggleLayer(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
+
+  // ── RANGE ──
+  // ── STEP NAV ──
+  function nextStep(from) {
+    if (!validateStep(from)) return;
+    goToStep(from + 1);
+  }
+  function prevStep(from) { goToStep(from - 1); }
+
+  function goToStep(step) {
+    document.getElementById(`step-${currentStep}`).classList.remove('active');
+    document.getElementById(`step-tab-${currentStep}`).classList.remove('active');
+    currentStep = step;
+    document.getElementById(`step-${currentStep}`).classList.add('active');
+    document.getElementById(`step-tab-${currentStep}`).classList.add('active');
+    document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // ── VALIDATE ──
+  function validateStep(step) {
+    let ok = true;
+
+    const setErr = (id, show) => {
+      const e = document.getElementById(`err-${id}`);
+      const i = document.getElementById(id);
+      if (e) e.classList.toggle('show', show);
+      if (i && i.tagName === 'INPUT') i.classList.toggle('error', show);
+    };
+
+    if (step === 1) {
+      const fn = document.getElementById('first-name').value.trim();
+      const ln = document.getElementById('last-name').value.trim();
+      const age = document.querySelector('input[name="age"]:checked');
+      const country = document.getElementById('country').value;
+      setErr('first-name', !fn); if (!fn) ok = false;
+      setErr('last-name', !ln); if (!ln) ok = false;
+      setErr('age', !age); if (!age) ok = false;
+      setErr('country', !country); if (!country) ok = false;
+    }
+
+    if (step === 2) {
+      const lg = document.querySelector('input[name="league"]:checked');
+      setErr('league', !lg); if (!lg) ok = false;
+    }
+
+    if (step === 3) {
+      const selected = document.querySelectorAll('input[name="pfeature"]:checked');
+      const warn = document.getElementById('priority-warning');
+      if (selected.length === 0) {
+        warn.style.display = 'block'; ok = false;
+      } else { warn.style.display = 'none'; }
+      // Limit to 5
+      if (selected.length > 5) {
+        warn.textContent = '⚠️ Please select a maximum of 5 features';
+        warn.style.display = 'block'; ok = false;
+      }
+    }
+
+    if (step === 5) {
+      const email = document.getElementById('email').value.trim();
+      const consent = document.getElementById('consent').checked;
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      setErr('email', !emailOk); if (!emailOk) ok = false;
+      setErr('consent', !consent); if (!consent) ok = false;
+    }
+
+    return ok;
+  }
+
+  // ── CHECKBOX LIMIT ──
+  document.addEventListener('change', function(e) {
+    if (e.target.name === 'pfeature') {
+      const checked = document.querySelectorAll('input[name="pfeature"]:checked');
+      const warn = document.getElementById('priority-warning');
+      if (checked.length > 5) {
+        e.target.checked = false;
+        warn.textContent = '⚠️ Maximum 5 features — unselect one to choose another';
+        warn.style.display = 'block';
+      } else {
+        warn.style.display = 'none';
+      }
+    }
+  });
+
+  // ── SUBMIT ──
+  async function submitForm() {
+    if (!validateStep(5)) return;
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Securing your spot...';
+    btn.disabled = true;
+
+    const entry = {
+      id: Date.now(),
+      ts: new Date().toISOString(),
+      firstName: document.getElementById('first-name').value.trim(),
+      lastName: document.getElementById('last-name').value.trim(),
+      age: document.querySelector('input[name="age"]:checked')?.value||'',
+      country: document.getElementById('country').value,
+      source: document.getElementById('source').value,
+      league: document.querySelector('input[name="league"]:checked')?.value||'',
+      club: document.getElementById('fav-club').value.trim(),
+      watchFreq: document.getElementById('watch-freq').value,
+      passion: document.querySelector('input[name="passion"]:checked')?.value||'',
+      features: [...document.querySelectorAll('input[name="pfeature"]:checked')].map(i=>i.value),
+      oneFeature: document.getElementById('one-feature').value.trim(),
+      web3Exp: document.querySelector('input[name="web3"]:checked')?.value||'',
+      telegramUse: document.getElementById('telegram-use').value,
+      nftExp: document.getElementById('nft-exp').value,
+      voteIntent: document.querySelector('input[name="vote-intent"]:checked')?.value||'',
+      jerseyIntent: document.querySelector('input[name="jersey-intent"]:checked')?.value||'',
+      jerseyAddons: [...document.querySelectorAll('input[name="jersey-add"]:checked')].map(i=>i.value),
+      unmissable: document.getElementById('unmissable').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      telegramHandle: document.getElementById('telegram-handle').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      referral: document.getElementById('referral').value.trim(),
+      message: document.getElementById('final-message').value.trim(),
+    };
+
+    let count = 47;
+    try {
+      await window.storage.set(`entry:${entry.id}`, JSON.stringify(entry), true);
+      try {
+        const r = await window.storage.get(COUNT_KEY, true);
+        count = r ? parseInt(r.value) + 1 : 48;
+      } catch(e) { count = 48; }
+      await window.storage.set(COUNT_KEY, String(count), true);
+      updateCounterUI(count);
+    } catch(e) { count = 48; }
+
+    showSuccess(count, entry.email);
+  }
+
+  function showSuccess(pos, email) {
+    for (let i=1;i<=TOTAL_STEPS;i++) {
+      const s = document.getElementById(`step-${i}`);
+      if (s) s.classList.remove('active');
+    }
+    document.querySelector('.step-indicator').style.display = 'none';
+    const ss = document.getElementById('success-screen');
+    ss.style.display = 'block';
+    document.getElementById('position-badge').textContent = `🏆 Founding Member #${pos.toLocaleString()}`;
+    const ref = btoa(email).replace(/[^a-zA-Z0-9]/g,'').slice(0,8).toUpperCase();
+    document.getElementById('share-url').value = `https://footnfts.com/waitlist?ref=${ref}`;
+    document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // ── SHARE ──
+  function copyLink() {
+    navigator.clipboard.writeText(document.getElementById('share-url').value).then(() => {
+      const b = document.getElementById('copy-btn');
+      b.textContent = '✓ Copied!'; b.classList.add('copied');
+      showToast('✓ Link copied to clipboard');
+      setTimeout(()=>{ b.textContent='Copy Link'; b.classList.remove('copied'); }, 2500);
+    });
+  }
+  function shareTwitter() {
+    const t = encodeURIComponent('I just joined the FOOT NFTs Founding Council — first platform where fans vote football highlights into NFTs and earn royalties. Join me: ');
+    const u = encodeURIComponent(document.getElementById('share-url').value);
+    window.open(`https://twitter.com/intent/tweet?text=${t}&url=${u}`, '_blank');
+  }
+  function shareTelegram() {
+    const u = encodeURIComponent(document.getElementById('share-url').value);
+    const t = encodeURIComponent('🚀 I just joined FOOT NFTs Founding Council! Vote football highlights into NFTs and earn from them. Join here:');
+    window.open(`https://t.me/share/url?url=${u}&text=${t}`, '_blank');
+  }
+  function shareWhatsApp() {
+    const t = encodeURIComponent(`I just joined FOOT NFTs — Own the Pitch! Vote football highlights into NFTs and share the royalties 🔥 Join: ${document.getElementById('share-url').value}`);
+    window.open(`https://wa.me/?text=${t}`, '_blank');
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2500);
+  }
+
+  // INIT
+  loadCount();
+</script>
+</body>
+</html>
