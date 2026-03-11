@@ -33,18 +33,88 @@
 
   .wrapper { position:relative; z-index:1; max-width:700px; margin:0 auto; padding:40px 20px 80px; }
 
-  /* HEADER */
+  /* HEADER - Updated with NFT logo and Telegram link */
   .header { text-align:center; margin-bottom:36px; animation:fadeUp 0.6s ease both; }
   .logo-mark { display:inline-flex; align-items:center; gap:12px; margin-bottom:20px; }
-  .logo-icon { width:48px; height:48px; background:var(--orange); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; }
+  .logo-icon { 
+    width:48px; 
+    height:48px; 
+    border-radius:12px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    font-size:24px;
+    overflow: hidden;
+  }
+  /* NFT Logo styling */
+  .logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .logo-text { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:3px; }
   .logo-text span { color:var(--orange); }
+  
+  /* Telegram link in header - New */
+  .header-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0 10px;
+  }
+  .telegram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 100px;
+    padding: 8px 18px;
+    color: var(--teal);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  .telegram-link:hover {
+    background: rgba(0,229,255,0.2);
+    border-color: var(--teal);
+    transform: translateY(-2px);
+  }
+  .telegram-icon {
+    font-size: 18px;
+  }
+  
   .header-eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:4px; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
   .header h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,8vw,62px); line-height:0.95; letter-spacing:2px; margin-bottom:14px; }
   .header h1 .g { color:var(--green); } .header h1 .o { color:var(--orange); }
   .header p { font-size:15px; color:var(--text-secondary); line-height:1.65; max-width:500px; margin:0 auto 20px; }
   .counter-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.25); border-radius:100px; padding:8px 16px; font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--green); letter-spacing:1px; }
   .cdot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+
+  /* Mobile Responsive Improvements */
+  @media (max-width: 600px) {
+    .wrapper { padding: 20px 15px 60px; }
+    .logo-mark { gap: 8px; }
+    .logo-icon { width: 40px; height: 40px; }
+    .logo-text { font-size: 24px; }
+    .header-links { flex-direction: column; gap: 10px; }
+    .telegram-link { width: 100%; justify-content: center; }
+    .form-section { padding: 20px; }
+    .buckets-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .priority-feature { flex-wrap: wrap; }
+    .pf-badge { margin-top: 5px; }
+  }
+  
+  @media (max-width: 400px) {
+    .buckets-row { grid-template-columns: 1fr; }
+    .btn-row { flex-direction: column; }
+    .btn-row .btn { width: 100%; }
+    .step-item { font-size: 8px; padding: 10px 3px; }
+    .step-num { font-size: 12px; }
+  }
 
   /* PROGRESS */
   .progress-wrap { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px; margin-bottom:28px; animation:fadeUp 0.6s 0.1s ease both; }
@@ -95,8 +165,8 @@
 
   /* FORM CARD */
   .form-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; overflow:hidden; animation:fadeUp 0.6s 0.2s ease both; }
-  .step-indicator { display:flex; background:var(--surface2); border-bottom:1px solid var(--border); }
-  .step-item { flex:1; padding:13px 6px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); position:relative; transition:color 0.3s; cursor:default; }
+  .step-indicator { display:flex; background:var(--surface2); border-bottom:1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .step-item { flex:1; padding:13px 6px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); position:relative; transition:color 0.3s; cursor:default; white-space: nowrap; }
   .step-item.active { color:var(--green); }
   .step-item.active::after { content:''; position:absolute; bottom:0; left:15%; right:15%; height:2px; background:var(--green); border-radius:2px 2px 0 0; }
   .step-num { display:block; font-size:15px; font-weight:700; margin-bottom:1px; color:inherit; }
@@ -212,9 +282,11 @@
   .social-btn { flex:1; padding:9px; border-radius:7px; border:1px solid var(--border); background:transparent; color:var(--text-secondary); font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:1px; cursor:pointer; transition:all 0.2s; text-align:center; }
   .social-btn:hover { border-color:rgba(255,255,255,0.2); color:var(--text); background:rgba(255,255,255,0.04); }
 
-  /* FOOTER */
+  /* FOOTER - Updated with Telegram link */
   .form-footer { text-align:center; margin-top:28px; font-size:11px; color:var(--text-muted); letter-spacing:0.5px; line-height:1.8; animation:fadeUp 0.6s 0.4s ease both; }
-  .form-footer strong { color:var(--teal); }
+  .form-footer a { color:var(--teal); text-decoration:none; transition:color 0.2s; }
+  .form-footer a:hover { color:var(--green); }
+  .footer-telegram { display:inline-block; margin:10px 0; }
 
   .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--surface); border:1px solid var(--border-active); border-radius:10px; padding:11px 18px; font-size:13px; color:var(--green); font-family:'Barlow Condensed',sans-serif; letter-spacing:1px; transition:transform 0.3s ease; z-index:100; white-space:nowrap; }
   .toast.show { transform:translateX(-50%) translateY(0); }
@@ -232,14 +304,23 @@
 
 <div class="wrapper">
 
-  <!-- HEADER -->
+  <!-- HEADER - Updated with FOOT NFT logo and Telegram link -->
   <div class="header">
     <a href="https://footnfts.com" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
     <div class="logo-mark">
-      <div class="logo-icon">⚽</div>
+      <div class="logo-icon">
+        <!-- NFT Logo -->
+        <img src="nft-logo.png" alt="FOOT NFTs Logo" onerror="this.style.display='none';this.parentElement.innerHTML='⚽';">
+      </div>
       <div class="logo-text">FOOT <span>NFTs</span></div>
     </div>
     </a>
+    <!-- Telegram Link Added Here -->
+    <div class="header-links">
+      <a href="https://t.me/footnft_official" target="_blank" rel="noopener" class="telegram-link">
+        Join our Telegram Community
+      </a>
+    </div>
     <div class="header-eyebrow">Early Access — Founding Council</div>
     <h1>JOIN THE<br><span class="g">FOUNDING</span><br><span class="o">COUNCIL</span></h1>
     <p>Be part of the first 10,000 fans to shape the future of football ownership. Vote on what becomes history. Earn from the moments you champion.</p>
@@ -825,23 +906,32 @@
 
   <div class="form-footer">
     <strong>FOOT NFTs</strong> — Own the Pitch · Built on TON · Powered by KACHI LABS<br>
-    <a href="https://footnfts.com" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">footnfts.com</a> · <a href="https://t.me/footnfts_bot" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">t.me/footnfts_bot</a> · Your data is used only for waitlist and product updates.
+    <a href="https://footnfts.com" target="_blank" rel="noopener">footnfts.com</a> · 
+    <a href="https://t.me/footnft_official" target="_blank" rel="noopener" style="color:var(--teal);">Join Telegram Community ✈️</a> · 
+    Your data is used only for waitlist and product updates.
   </div>
 
 </div>
 
 <script>
+  
+
+  // Configuration
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNmfrCHXsGywP04XqshCi0fpaOShYm-65WS_rt7SM2O3Pue2lrngI3Su6zHc237oFZ/exec';
+  const TELEGRAM_LINK = 'https://t.me/footnft_official';
+  const COUNT_KEY = 'footnfts_waitlist_count_v2';
+  
   let currentStep = 1;
   const TOTAL_STEPS = 5;
-  const SPEND_LABELS = ['$0','$5','$10','$25','$50','$100+'];
-  const COUNT_KEY = 'footnfts_waitlist_count_v2';
 
-  // ── LOAD COUNT ──
+  // ── LOAD WAITLIST COUNT ──
   async function loadCount() {
     try {
       const r = await window.storage.get(COUNT_KEY, true);
       updateCounterUI(r ? parseInt(r.value) : 47);
-    } catch(e) { updateCounterUI(47); }
+    } catch(e) { 
+      updateCounterUI(47); 
+    }
   }
 
   function updateCounterUI(n) {
@@ -851,19 +941,21 @@
     document.getElementById('spots-left').textContent = `${Math.max(10000-n,0).toLocaleString()} spots`;
   }
 
-  // ── ACCORDION ──
+  // ── ACCORDION TOGGLE ──
   function toggleLayer(header) {
     const item = header.parentElement;
     item.classList.toggle('open');
   }
 
-  // ── RANGE ──
-  // ── STEP NAV ──
+  // ── STEP NAVIGATION ──
   function nextStep(from) {
     if (!validateStep(from)) return;
     goToStep(from + 1);
   }
-  function prevStep(from) { goToStep(from - 1); }
+  
+  function prevStep(from) { 
+    goToStep(from - 1); 
+  }
 
   function goToStep(step) {
     document.getElementById(`step-${currentStep}`).classList.remove('active');
@@ -874,7 +966,7 @@
     document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  // ── VALIDATE ──
+  // ── FORM VALIDATION ──
   function validateStep(step) {
     let ok = true;
 
@@ -905,12 +997,15 @@
       const selected = document.querySelectorAll('input[name="pfeature"]:checked');
       const warn = document.getElementById('priority-warning');
       if (selected.length === 0) {
-        warn.style.display = 'block'; ok = false;
-      } else { warn.style.display = 'none'; }
-      // Limit to 5
+        warn.style.display = 'block'; 
+        ok = false;
+      } else { 
+        warn.style.display = 'none'; 
+      }
       if (selected.length > 5) {
         warn.textContent = '⚠️ Please select a maximum of 5 features';
-        warn.style.display = 'block'; ok = false;
+        warn.style.display = 'block'; 
+        ok = false;
       }
     }
 
@@ -925,7 +1020,7 @@
     return ok;
   }
 
-  // ── CHECKBOX LIMIT ──
+  // ── CHECKBOX LIMIT (max 5 features) ──
   document.addEventListener('change', function(e) {
     if (e.target.name === 'pfeature') {
       const checked = document.querySelectorAll('input[name="pfeature"]:checked');
@@ -940,100 +1035,159 @@
     }
   });
 
-  // ── SUBMIT ──
+  // ── MAIN SUBMIT FUNCTION - Sends data to Google Sheets ──
   async function submitForm() {
+    // Validate step 5 before submitting
     if (!validateStep(5)) return;
+    
+    // Show loading state
     const btn = document.getElementById('submit-btn');
+    const originalText = btn.textContent;
     btn.textContent = 'Securing your spot...';
     btn.disabled = true;
 
-    const entry = {
-      id: Date.now(),
-      ts: new Date().toISOString(),
-      firstName: document.getElementById('first-name').value.trim(),
-      lastName: document.getElementById('last-name').value.trim(),
-      age: document.querySelector('input[name="age"]:checked')?.value||'',
-      country: document.getElementById('country').value,
-      source: document.getElementById('source').value,
-      league: document.querySelector('input[name="league"]:checked')?.value||'',
-      club: document.getElementById('fav-club').value.trim(),
-      watchFreq: document.getElementById('watch-freq').value,
-      passion: document.querySelector('input[name="passion"]:checked')?.value||'',
-      features: [...document.querySelectorAll('input[name="pfeature"]:checked')].map(i=>i.value),
-      oneFeature: document.getElementById('one-feature').value.trim(),
-      web3Exp: document.querySelector('input[name="web3"]:checked')?.value||'',
-      telegramUse: document.getElementById('telegram-use').value,
-      nftExp: document.getElementById('nft-exp').value,
-      voteIntent: document.querySelector('input[name="vote-intent"]:checked')?.value||'',
-      jerseyIntent: document.querySelector('input[name="jersey-intent"]:checked')?.value||'',
-      jerseyAddons: [...document.querySelectorAll('input[name="jersey-add"]:checked')].map(i=>i.value),
-      unmissable: document.getElementById('unmissable').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      telegramHandle: document.getElementById('telegram-handle').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      referral: document.getElementById('referral').value.trim(),
-      message: document.getElementById('final-message').value.trim(),
-    };
-
-    let count = 47;
     try {
-      await window.storage.set(`entry:${entry.id}`, JSON.stringify(entry), true);
+      // Collect all form data
+      const entry = {
+        timestamp: new Date().toISOString(),
+        firstName: document.getElementById('first-name').value.trim(),
+        lastName: document.getElementById('last-name').value.trim(),
+        age: document.querySelector('input[name="age"]:checked')?.value || '',
+        country: document.getElementById('country').value,
+        source: document.getElementById('source').value,
+        league: document.querySelector('input[name="league"]:checked')?.value || '',
+        club: document.getElementById('fav-club').value.trim(),
+        watchFreq: document.getElementById('watch-freq').value,
+        passion: document.querySelector('input[name="passion"]:checked')?.value || '',
+        features: [...document.querySelectorAll('input[name="pfeature"]:checked')].map(i => i.value),
+        oneFeature: document.getElementById('one-feature').value.trim(),
+        web3Exp: document.querySelector('input[name="web3"]:checked')?.value || '',
+        telegramUse: document.getElementById('telegram-use').value,
+        nftExp: document.getElementById('nft-exp').value,
+        voteIntent: document.querySelector('input[name="vote-intent"]:checked')?.value || '',
+        jerseyIntent: document.querySelector('input[name="jersey-intent"]:checked')?.value || '',
+        jerseyAddons: [...document.querySelectorAll('input[name="jersey-add"]:checked')].map(i => i.value),
+        unmissable: document.getElementById('unmissable').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        telegramHandle: document.getElementById('telegram-handle').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        referral: document.getElementById('referral').value.trim(),
+        message: document.getElementById('final-message').value.trim()
+      };
+
+      // Send to Google Sheets via Apps Script
+      const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // This allows cross-origin requests to Google Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(entry)
+      });
+
+      // Update local counter
+      let count = 47;
       try {
         const r = await window.storage.get(COUNT_KEY, true);
         count = r ? parseInt(r.value) + 1 : 48;
-      } catch(e) { count = 48; }
-      await window.storage.set(COUNT_KEY, String(count), true);
-      updateCounterUI(count);
-    } catch(e) { count = 48; }
+        await window.storage.set(COUNT_KEY, String(count), true);
+        updateCounterUI(count);
+      } catch(e) { 
+        count = 48; 
+      }
 
-    showSuccess(count, entry.email);
+      // Show success screen
+      showSuccess(count, entry.email);
+      
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error submitting your form. Please try again.');
+      
+      // Reset button
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
   }
 
+  // ── SHOW SUCCESS SCREEN ──
   function showSuccess(pos, email) {
-    for (let i=1;i<=TOTAL_STEPS;i++) {
+    // Hide all form steps
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
       const s = document.getElementById(`step-${i}`);
       if (s) s.classList.remove('active');
     }
+    
+    // Hide step indicator
     document.querySelector('.step-indicator').style.display = 'none';
+    
+    // Show success screen
     const ss = document.getElementById('success-screen');
     ss.style.display = 'block';
+    
+    // Update position badge
     document.getElementById('position-badge').textContent = `🏆 Founding Member #${pos.toLocaleString()}`;
-    const ref = btoa(email).replace(/[^a-zA-Z0-9]/g,'').slice(0,8).toUpperCase();
+    
+    // Generate referral link
+    const ref = btoa(email).replace(/[^a-zA-Z0-9]/g, '').slice(0, 8).toUpperCase();
     document.getElementById('share-url').value = `https://footnfts.com/waitlist?ref=${ref}`;
-    document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
+    
+    // Scroll to top of form card
+    document.querySelector('.form-card').scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
-  // ── SHARE ──
+  // ── SHARE FUNCTIONS ──
   function copyLink() {
     navigator.clipboard.writeText(document.getElementById('share-url').value).then(() => {
       const b = document.getElementById('copy-btn');
-      b.textContent = '✓ Copied!'; b.classList.add('copied');
+      b.textContent = '✓ Copied!'; 
+      b.classList.add('copied');
       showToast('✓ Link copied to clipboard');
-      setTimeout(()=>{ b.textContent='Copy Link'; b.classList.remove('copied'); }, 2500);
+      setTimeout(() => { 
+        b.textContent = 'Copy Link'; 
+        b.classList.remove('copied'); 
+      }, 2500);
     });
   }
+  
   function shareTwitter() {
     const t = encodeURIComponent('I just joined the FOOT NFTs Founding Council — first platform where fans vote football highlights into NFTs and earn royalties. Join me: ');
     const u = encodeURIComponent(document.getElementById('share-url').value);
     window.open(`https://twitter.com/intent/tweet?text=${t}&url=${u}`, '_blank');
   }
+  
   function shareTelegram() {
     const u = encodeURIComponent(document.getElementById('share-url').value);
     const t = encodeURIComponent('🚀 I just joined FOOT NFTs Founding Council! Vote football highlights into NFTs and earn from them. Join here:');
     window.open(`https://t.me/share/url?url=${u}&text=${t}`, '_blank');
   }
+  
   function shareWhatsApp() {
     const t = encodeURIComponent(`I just joined FOOT NFTs — Own the Pitch! Vote football highlights into NFTs and share the royalties 🔥 Join: ${document.getElementById('share-url').value}`);
     window.open(`https://wa.me/?text=${t}`, '_blank');
   }
+  
   function showToast(msg) {
     const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'), 2500);
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
   }
 
-  // INIT
-  loadCount();
+  // ── INITIALIZE ON PAGE LOAD ──
+  document.addEventListener('DOMContentLoaded', function() {
+    loadCount();
+    
+    // Add smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+
 </script>
 </body>
 </html>
